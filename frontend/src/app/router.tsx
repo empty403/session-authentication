@@ -1,5 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AuthLayout } from '../components/layout/AuthLayout'
+import { ErrorLayout } from '../components/layout/ErrorLayout'
 import { LandingPage } from './public/landing/LandingPage'
 import { LoginPage } from './public/login/LoginPage'
 import { RegisterPage } from './public/register/RegisterPage'
@@ -17,16 +19,20 @@ export const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
-        <Route path="/verify-email/:token" element={<VerifyEmailPage />} />
-        <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+          <Route path="/verify-email/:token" element={<VerifyEmailPage />} />
+          <Route path="/oauth/callback" element={<OAuthCallbackPage />} />
+        </Route>
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/500" element={<ServerErrorPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route element={<ErrorLayout />}>
+          <Route path="/500" element={<ServerErrorPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )

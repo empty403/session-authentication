@@ -46,6 +46,11 @@ export const authApi = {
     return response.data
   },
 
+  validateResetToken: async (token: string): Promise<{ valid: boolean, message?: string }> => {
+    const response = await api.get(`/auth/validate-reset-token/${token}`)
+    return response.data
+  },
+
   resetPassword: async (token: string, password: string): Promise<{ message: string }> => {
     const response = await api.post('/auth/reset-password', { token, password })
     return response.data
