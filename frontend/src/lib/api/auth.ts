@@ -65,4 +65,9 @@ export const authApi = {
     const response = await api.post('/auth/resend-verification')
     return response.data
   },
+
+  googleAuth: async (credential: string): Promise<AuthResponse> => {
+    const response = await api.post('/auth/google', { credential })
+    return response.data
+  },
 }

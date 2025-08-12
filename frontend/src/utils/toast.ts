@@ -13,7 +13,6 @@ type CustomizedToastProps = Omit<
 export const toast = {
   success: (options: CustomizedToastProps) => {
     addToast({
-      title: "Success",
       color: "success",
       ...options,
     });
@@ -21,7 +20,6 @@ export const toast = {
 
   error: (options: CustomizedToastProps) => {
     addToast({
-      title: "Error",
       color: "danger",
       ...options,
     });
@@ -29,7 +27,6 @@ export const toast = {
 
   warning: (options: CustomizedToastProps) => {
     addToast({
-      title: "Warning",
       color: "warning",
       ...options,
     });
@@ -37,7 +34,6 @@ export const toast = {
 
   info: (options: CustomizedToastProps) => {
     addToast({
-      title: "Info",
       color: "primary",
       ...options,
     });
